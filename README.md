@@ -16,3 +16,8 @@ npx hardhat ignition deploy ./ignition/modules/Lock.ts
 ## usage:
 ```
 mcm to_address amount
+
+
+
+## task
+- how to generate typechain-types

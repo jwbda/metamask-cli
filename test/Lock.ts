@@ -81,6 +81,7 @@ describe("Lock", function () {
         await expect(lock.connect(otherAccount).withdraw()).to.be.revertedWith(
           "You aren't the owner"
         );
+
       });
 
       it("Shouldn't fail if the unlockTime has arrived and the owner calls it", async function () {

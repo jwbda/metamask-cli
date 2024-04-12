@@ -1,11 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "ES2022",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "skipDefaultLibCheck": true,
+    "outDir": "./dist",
+    "composite": true
+  },
+  "exclude": [
+    "./dist/**/*",
+    "./node_modules/**/*",
+    "./cache/**/*",
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.json",
+    "./tasks/**/*.ts",
+    "./artifacts/contracts/MMC.sol/Mmc.json"
+  ]
 }

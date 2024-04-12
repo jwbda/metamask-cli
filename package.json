@@ -4,16 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build .",
+    "test": "hardhat test",
+    "clean": "rm -rf artifacts/ cache/ ignition/deployments/ typechain-types/ dist/"
+  },
+  "bin": {
+    "hardhat-completion": "dist/src/completion.js",
+    "mmc": "dist/src/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
+    "@nomicfoundation/hardhat-ethers": "3.0.5",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "hardhat": "^2.22.2"
+    "@openzeppelin/hardhat-upgrades": "3.0.5",
+    "@types/debug": "^4.1.12",
+    "@types/semver": "^7.5.8",
+    "chai": "^4.3.7",
+    "ethers": "^6.12.0",
+    "hardhat": "^2.22.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "@openzeppelin/contracts": "^5.0.2",
+    "debug": "^4.3.4",
+    "dotenv": "^16.4.5",
+    "semver": "^6.3.1"
+  },
+  "engines": {
+    "node": ">=20.0.0 <21.0.0"
   }
 }
