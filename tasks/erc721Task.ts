@@ -1,10 +1,10 @@
 import { task, types } from "hardhat/config";
 import { HardhatRuntimeEnvironment, EthereumProvider } from 'hardhat/types';
 import "@nomicfoundation/hardhat-ethers";
-import * as erc20Abi from "../src/abis/erc20-abi.json"
-import * as erc721Abi from "../src/abis/erc721-abi.json"
-import { fromPrivateKey, readEnv } from "../src/lib/utils";
-import { UsingAccountT } from "../src/lib/utils"
+import * as erc20Abi from "../src/abis/erc20-abi.json";
+import * as erc721Abi from "../src/abis/erc721-abi.json";
+import { fromPrivateKey, readEnv, toWei } from "../src/lib/utils";
+import { UsingAccountT } from "../src/lib/utils";
 
 // ERC721 interface:
 // balanceOf(address _owner) external view returns (uint256 balance)
@@ -72,8 +72,8 @@ transferfrom721Task
 
         const contract = new hre.ethers.Contract(token, erc721Abi.abi, fromWallet);
         // function approve(address to, uint256 tokenId) external;
-        // const tx = await contract.approve(from, tokenid);
-        // await tx.wait();
+        const tx = await contract.approve(from, tokenid);
+        await tx.wait();
         await contract.transferFrom(from, to, tokenid);
         console.log(`>>> transferfrom721 end`);
 
@@ -109,12 +109,3 @@ balanceOf721Task
         console.log(`>>> transferfrom721 end, num -> ${num}`);
     })
 
-task("deploycontract", "deploycontract")
-    .addOptionalParam("name", "name")
-    .setAction(async (args, hre: HardhatRuntimeEnvironment) => {
-        const Temp = await hre.ethers.getContractFactory(args.name)
-        const temp = await Temp.deploy();
-        await temp.waitForDeployment()
-        console.log(">>> deploy contract address->", await temp.getAddress());
-
-    })

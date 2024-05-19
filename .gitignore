@@ -16,4 +16,7 @@ node_modules
 # ignition
 /ignition/deployments
 
+/bin
 /dist
+/test/test_0
+/tasks/localTask.ts
